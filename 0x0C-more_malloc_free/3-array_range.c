@@ -22,19 +22,19 @@ int *array_range(int min, int max)
         length++;
         minimum++;
     }
+    length++;
 
-    int *ptr = (int *) malloc (sizeof (int) * length);
+    int *ptr = (int *)malloc(sizeof(int) * length);
 
     if (ptr == NULL)
         return NULL;
     
     int i;
 
-    for (i = 0 ; i < length ; i++)
+    for (i = 0 ; min <= max ; i++)
     {
-        ptr[i] = min;
-        min++;
+        ptr[i] = min++;
     }
 
-    return ptr;
+    return (ptr);
 }
