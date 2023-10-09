@@ -9,15 +9,16 @@
  *
  * Return: pointer to the memory area s
  */
-void _memset (void *s, int b, unsigned int n)
+char *_memset(char *s, char b, unsigned int n)
 {
-    char *ptrchar = s;
-    int i ;
+	unsigned int i;
 
-    for (i = 0 ; i<n/sizeof (int) ; i++)
-    {
-        ptrchar[i] = b;
-    }
+	for (i = 0; i < n; i++)
+	{
+		s[i] = b;
+	}
+
+	return (s);
 }
 
 /**
@@ -27,14 +28,19 @@ void _memset (void *s, int b, unsigned int n)
  *
  * Return: pointer to allocated memory
  */
-void *_calloc (unsigned int nmemb, unsigned int size)
+void *_calloc(unsigned int nmemb, unsigned int size)
 {
-    void *ptr = malloc (size * nmemb);
+	char *ptr;
 
-    if (nmemb == 0 || ptr == NULL)
-        return (NULL);
+	if (nmemb == 0 || size == 0)
+		return (NULL);
 
-    _memset (ptr, 0, size*nmemb);
+	ptr = malloc(size * nmemb);
 
-    return (ptr);
+	if (ptr == NULL)
+		return (NULL);
+
+	_memset(ptr, 0, nmemb * size);
+
+	return (ptr);
 }
